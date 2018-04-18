@@ -11,7 +11,7 @@ public class HibernateUtil {
 		try {
 			return new Configuration().configure().buildSessionFactory();
 		} catch (Exception e) {
-			System.out.println("Se ha producido un error obteniendo la dactoria de sesiones: " + e.getMessage());
+			System.out.println("Se ha producido un error obteniendo la factoria de sesiones: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException();
 		}
