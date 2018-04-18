@@ -9,7 +9,8 @@ import es.aytos.hibernate.hibernate.repositorio.RepositorioPersona;
 public class Pruebas {
 	public static void main(String[] args) {
 		System.out.println(crearPersona());
-		RepositorioPersona.modificarPersona("Manuel", 1);
+		RepositorioPersona.modificarPersona("Pepe", 1);
+		RepositorioPersona.eliminarPersona(1);
 	}
 
 	private static Integer crearPersona() {

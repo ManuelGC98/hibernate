@@ -89,4 +89,24 @@ public class RepositorioPersona {
 			sesion.close();
 		}
 	}
+
+	public static void eliminarPersona(Integer idPersona) {
+		final Session sesion = HibernateUtil.getMiFactoria().getCurrentSession();
+
+		try {
+			sesion.beginTransaction();
+
+			sesion.createQuery("delete Persona where per_id = :idPersona").setParameter("idPersona", idPersona)
+					.executeUpdate();
+
+			sesion.getTransaction().commit();
+
+		} catch (Exception e) {
+			System.out.println("Se ha producido un error insertando la persona: " + e.getMessage());
+			e.printStackTrace();
+			throw new RuntimeException();
+		} finally {
+			sesion.close();
+		}
+	}
 }
