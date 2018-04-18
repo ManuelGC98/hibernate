@@ -9,8 +9,14 @@ import es.aytos.hibernate.hibernate.repositorio.RepositorioPersona;
 public class Pruebas {
 	public static void main(String[] args) {
 		System.out.println(crearPersona());
-		RepositorioPersona.modificarPersona("Pepe", 1);
-		RepositorioPersona.eliminarPersona(1);
+		// RepositorioPersona.modificarPersona("Pepe", 1);
+		// RepositorioPersona.eliminarPersona(1);
+		System.out.println(RepositorioPersona.consultarPersona(1).toString());
+
+		// System.out.println(crearAnimal());
+		// RepositorioAnimal.modificarAnimal("Yang", 1);
+		// RepositorioAnimal.eliminarAnimal(1);
+		// System.out.println(RepositorioAnimal.consultarAnimal(1).toString());
 	}
 
 	private static Integer crearPersona() {
@@ -26,6 +32,7 @@ public class Pruebas {
 
 	private static Integer crearAnimal() {
 		final Animal animal = new Animal();
+		animal.setNombre("Ying");
 		animal.setEspecie("Oso");
 		animal.setRaza("Panda");
 		animal.setEdad(7);

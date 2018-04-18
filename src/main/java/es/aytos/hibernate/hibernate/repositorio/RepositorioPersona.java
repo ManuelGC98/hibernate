@@ -1,6 +1,9 @@
 package es.aytos.hibernate.hibernate.repositorio;
 
+import java.util.List;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import es.aytos.hibernate.hibernate.modelo.Persona;
 import es.aytos.hibernate.hibernate.util.HibernateUtil;
@@ -39,7 +42,7 @@ public class RepositorioPersona {
 			sesion.getTransaction().commit();
 
 		} catch (Exception e) {
-			System.out.println("Se ha producido un error insertando la persona: " + e.getMessage());
+			System.out.println("Se ha producido un error modificando la persona: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException();
 		} finally {
@@ -62,7 +65,7 @@ public class RepositorioPersona {
 			sesion.getTransaction().commit();
 
 		} catch (Exception e) {
-			System.out.println("Se ha producido un error insertando la persona: " + e.getMessage());
+			System.out.println("Se ha producido un error modificando la persona: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException();
 		} finally {
@@ -82,7 +85,7 @@ public class RepositorioPersona {
 			sesion.getTransaction().commit();
 
 		} catch (Exception e) {
-			System.out.println("Se ha producido un error insertando la persona: " + e.getMessage());
+			System.out.println("Se ha producido un error modificando la persona: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException();
 		} finally {
@@ -102,7 +105,27 @@ public class RepositorioPersona {
 			sesion.getTransaction().commit();
 
 		} catch (Exception e) {
-			System.out.println("Se ha producido un error insertando la persona: " + e.getMessage());
+			System.out.println("Se ha producido un error eliminando la persona: " + e.getMessage());
+			e.printStackTrace();
+			throw new RuntimeException();
+		} finally {
+			sesion.close();
+		}
+	}
+
+	public static List<Persona> consultarPersona(Integer idPersona) {
+		final Session sesion = HibernateUtil.getMiFactoria().getCurrentSession();
+
+		try {
+			sesion.beginTransaction();
+
+			final Query<Persona> consulta = sesion.createQuery("from Persona where per_id = :idPersona");
+			consulta.setParameter("idPersona", idPersona);
+
+			return consulta.list();
+
+		} catch (Exception e) {
+			System.out.println("Se ha producido un error consultando la persona: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException();
 		} finally {

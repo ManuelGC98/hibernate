@@ -15,6 +15,9 @@ public class Animal {
 	@Column(name = "ANI_ID")
 	private int idAnimal;
 
+	@Column(name = "ANI_NOM", nullable = false, length = 50)
+	private String nombre;
+
 	@Column(name = "ANI_ESP", nullable = false, length = 50)
 	private String especie;
 
@@ -39,6 +42,14 @@ public class Animal {
 
 	public void setIdAnimal(int idAnimal) {
 		this.idAnimal = idAnimal;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public String getEspecie() {
@@ -79,6 +90,13 @@ public class Animal {
 
 	public void setEnPeligroDeExtincion(boolean enPeligroDeExtincion) {
 		this.enPeligroDeExtincion = enPeligroDeExtincion;
+	}
+
+	@Override
+	public String toString() {
+		return "Animal [idAnimal=" + idAnimal + ", nombre=" + nombre + ", especie=" + especie + ", raza=" + raza
+				+ ", paisDeOrigen=" + paisDeOrigen + ", edad=" + edad + ", enPeligroDeExtincion=" + enPeligroDeExtincion
+				+ "]";
 	}
 
 }

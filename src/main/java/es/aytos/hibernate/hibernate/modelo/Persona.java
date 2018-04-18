@@ -83,4 +83,10 @@ public class Persona {
 		this.estadoCivil = estadoCivil;
 	}
 
+	@Override
+	public String toString() {
+		return "Persona [idPersona=" + idPersona + ", nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni
+				+ ", edad=" + edad + ", estadoCivil=" + estadoCivil + "]";
+	}
+
 }
