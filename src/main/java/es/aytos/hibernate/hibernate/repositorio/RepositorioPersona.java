@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import es.aytos.hibernate.hibernate.modelo.Persona;
+import es.aytos.hibernate.hibernate.modelo.Cliente;
 import es.aytos.hibernate.hibernate.util.HibernateUtil;
 
 public class RepositorioPersona {
@@ -79,7 +80,7 @@ public class RepositorioPersona {
 		try {
 			sesion.beginTransaction();
 
-			sesion.createQuery("Update Persona set per_nom = :nombre where per_id = :identificador")
+			sesion.createQuery("Update Persona set per_nom = :nombre where usu_id = :identificador")
 					.setParameter("nombre", nombre).setParameter("identificador", idPersona).executeUpdate();
 
 			sesion.getTransaction().commit();
@@ -99,7 +100,7 @@ public class RepositorioPersona {
 		try {
 			sesion.beginTransaction();
 
-			sesion.createQuery("delete Persona where per_id = :idPersona").setParameter("idPersona", idPersona)
+			sesion.createQuery("delete Usuario where usu_id = :idPersona").setParameter("idPersona", idPersona)
 					.executeUpdate();
 
 			sesion.getTransaction().commit();
@@ -119,7 +120,7 @@ public class RepositorioPersona {
 		try {
 			sesion.beginTransaction();
 
-			final Query<Persona> consulta = sesion.createQuery("from Persona where per_id = :idPersona");
+			final Query<Persona> consulta = sesion.createQuery("from Persona where usu_id = :idPersona");
 			consulta.setParameter("idPersona", idPersona);
 
 			return consulta.list();

@@ -14,6 +14,8 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<mapping class="es.aytos.hibernate.hibernate.modelo.Persona" />
+		<mapping class="es.aytos.hibernate.hibernate.modelo.Cliente" />
+		<mapping class="es.aytos.hibernate.hibernate.modelo.Usuario" />
 		<mapping class="es.aytos.hibernate.hibernate.modelo.Animal" />
 
 	</session-factory>
