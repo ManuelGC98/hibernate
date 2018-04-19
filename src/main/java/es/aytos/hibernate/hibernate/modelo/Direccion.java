@@ -50,12 +50,6 @@ public class Direccion {
 	public Direccion() {
 	}
 
-	public Direccion(String calle, Integer numero, String codigoPostal) {
-		this.calle = calle;
-		this.numero = numero;
-		this.codigoPostal = codigoPostal;
-	}
-
 	public Integer getIdDireccion() {
 		return idDireccion;
 	}
@@ -130,23 +124,5 @@ public class Direccion {
 
 	public List<Persona> getPropietarios() {
 		return propietarios;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Direccion direccion = (Direccion) o;
-		return Objects.equals(calle, direccion.calle) && Objects.equals(numero, direccion.numero)
-				&& Objects.equals(codigoPostal, direccion.codigoPostal);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(calle, numero, codigoPostal);
 	}
 }
