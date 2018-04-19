@@ -14,7 +14,7 @@ public class PruebasCliente {
 
 		modificarCliente(1);
 		RepositorioCliente.eliminarCliente(2);
-		// System.out.println(RepositorioCliente.consultarCliente(2).toString());
+		System.out.println(RepositorioCliente.consultarCliente(1).toString());
 	}
 
 	private static Integer crearCliente(String login, String dni) {

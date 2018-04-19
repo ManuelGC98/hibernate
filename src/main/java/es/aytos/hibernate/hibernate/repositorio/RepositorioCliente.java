@@ -97,8 +97,8 @@ public class RepositorioCliente {
 		try {
 			sesion.beginTransaction();
 
-			final Query<Persona> consulta = sesion.createQuery("from Cliente where usu_id = :idCliente");
-			consulta.setParameter("idCliente", idCliente);
+			final Query<Persona> consulta = sesion.createQuery("from Cliente c where c.idUsuario = :identificador");
+			consulta.setParameter("identificador", idCliente);
 
 			return consulta.list();
 

@@ -1,8 +1,15 @@
 package es.aytos.hibernate.hibernate.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +32,19 @@ public class Persona extends Usuario {
 	@Enumerated
 	private EstadoCivil estadoCivil;
 
+	private String numeroRegistro;
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private List<Direccion> direcciones = new ArrayList<>();
+
+	@OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Telefono> telefonos = new ArrayList<>();
+	
 	public Persona() {
+	}
+
+	public Persona(String numeroRegistro) {
+		this.numeroRegistro = numeroRegistro;
 	}
 
 	public String getNombre() {
@@ -72,6 +91,51 @@ public class Persona extends Usuario {
 	public String toString() {
 		return "Persona [Nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", edad=" + edad
 				+ ", estado Civil=" + estadoCivil + "]";
+	}
+
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+
+	public void altaDireccion(Direccion direccion) {
+		direcciones.add(direccion);
+		direccion.getPropietarios().add(this);
+	}
+
+	public void borrarDireccion(Direccion direccion) {
+		direcciones.remove(direccion);
+		direccion.getPropietarios().remove(this);
+	}
+
+	public List<Telefono> getTelefonos() {
+        return telefonos;
+    }
+
+    public void altaTelefono(Telefono telefono) {
+        telefonos.add( telefono );
+        telefono.setPersona( this );
+    }
+
+    public void borrarTelefono(Telefono telefono) {
+    	telefonos.remove( telefono );
+        telefono.setPersona( null );
+    }
+    
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Persona persona = (Persona) o;
+		return Objects.equals(numeroRegistro, persona.numeroRegistro);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(numeroRegistro);
 	}
 
 }

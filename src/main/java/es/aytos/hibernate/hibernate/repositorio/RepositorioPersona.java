@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 
 import es.aytos.hibernate.hibernate.modelo.Persona;
 import es.aytos.hibernate.hibernate.modelo.Cliente;
+import es.aytos.hibernate.hibernate.modelo.Direccion;
 import es.aytos.hibernate.hibernate.util.HibernateUtil;
 
 public class RepositorioPersona {
@@ -120,8 +121,8 @@ public class RepositorioPersona {
 		try {
 			sesion.beginTransaction();
 
-			final Query<Persona> consulta = sesion.createQuery("from Persona where usu_id = :idPersona");
-			consulta.setParameter("idPersona", idPersona);
+			final Query<Persona> consulta = sesion.createQuery("from Persona p where p.idUsuario = :identificador");
+			consulta.setParameter("identificador", idPersona);
 
 			return consulta.list();
 
