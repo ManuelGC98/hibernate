@@ -13,13 +13,11 @@ import es.aytos.hibernate.hibernate.repositorio.RepositorioPersona;
 
 public class PruebasPersona {
 	public static void main(String[] args) {
-		System.out.println(crearPersona("Usuario2", "12345678Z"));
-		// System.out.println(crearPersona("Usuario2", "12345678C"));
-
+		System.out.println(crearPersona("Usuario1", "12345678Z"));
 		// modificarPersona(1);
 		// RepositorioPersona.eliminarPersona(2);
 		// System.out.println(RepositorioPersona.consultarPersona(1).toString());
-		// System.out.println(getTelefonos("Usuario1", "12345678X"));
+		// System.out.println(getTelefonos("Usuario2", "12345678X"));
 	}
 
 	private static Integer crearPersona(String login, String dni) {
@@ -34,30 +32,30 @@ public class PruebasPersona {
 		persona.setPassword("Contraseña");
 		persona.setGenero(Genero.MASCULINO);
 
-		// Direccion direccion1 = new Direccion();
-		// direccion1.setProvincia("Sevilla");
-		// direccion1.setCiudad("Écija");
-		// direccion1.setCalle("Calle");
-		// direccion1.setNumero(1);
-		// direccion1.setCodigoPostal("4005A");
-		// direccion1.setBloque(1);
-		// direccion1.setPlanta(2);
-		// direccion1.setPuerta("A");
-		//
-		// Direccion direccion2 = new Direccion();
-		// direccion1.setProvincia("Sevilla");
-		// direccion1.setCiudad("Écija");
-		// direccion1.setCalle("Calle");
-		// direccion1.setNumero(18);
-		// direccion1.setCodigoPostal("4007B");
-		// direccion1.setBloque(1);
-		// direccion1.setPlanta(2);
-		// direccion1.setPuerta("A");
-		//
-		// persona.altaDireccion(direccion1);
-		// persona.altaDireccion(direccion2);
+		Direccion direccion1 = new Direccion();
+		direccion1.setProvincia("Sevilla");
+		direccion1.setCiudad("Écija");
+		direccion1.setCalle("Calle");
+		direccion1.setNumero(1);
+		direccion1.setCodigoPostal("4005A");
+		direccion1.setBloque(1);
+		direccion1.setPlanta(2);
+		direccion1.setPuerta("A");
 
-		// persona.borrarDireccion(direccion1);
+		Direccion direccion2 = new Direccion();
+		direccion2.setProvincia("Sevilla");
+		direccion2.setCiudad("Écija");
+		direccion2.setCalle("Calle");
+		direccion2.setNumero(18);
+		direccion2.setCodigoPostal("4007B");
+		direccion2.setBloque(2);
+		direccion2.setPlanta(2);
+		direccion2.setPuerta("A");
+
+		persona.altaDireccion(direccion1);
+		persona.altaDireccion(direccion2);
+
+		persona.borrarDireccion(direccion1);
 
 		Telefono telefono1 = new Telefono(623456789);
 		Telefono telefono2 = new Telefono(621654098);
@@ -65,7 +63,7 @@ public class PruebasPersona {
 		persona.altaTelefono(telefono1);
 		persona.altaTelefono(telefono2);
 
-		// persona.borrarTelefono(telefono1);
+		persona.borrarTelefono(telefono1);
 
 		DetallesPersona detalles = new DetallesPersona();
 		detalles.setTieneHijos(false);
@@ -83,11 +81,12 @@ public class PruebasPersona {
 		persona.setApellidos("Garcia");
 		persona.setEdad(28);
 		persona.setEstadoCivil(EstadoCivil.SOLTERO);
-		persona.setDni("12345678X");
+		persona.setDni("12345464X");
 		persona.setFechaAlta(new Date());
-		persona.setLogin("Usuario1");
+		persona.setLogin("UsuarioModificado");
 		persona.setPassword("Contraseña");
 		persona.setIdUsuario(idPersona);
+		persona.setGenero(Genero.MASCULINO);
 
 		RepositorioPersona.modificarPersona(persona);
 	}
@@ -102,9 +101,10 @@ public class PruebasPersona {
 		persona.setFechaAlta(new Date());
 		persona.setLogin(login);
 		persona.setPassword("Contraseña");
+		persona.setGenero(Genero.MASCULINO);
 
-		Telefono telefono1 = new Telefono(623456789);
-		Telefono telefono2 = new Telefono(621654098);
+		Telefono telefono1 = new Telefono(643986739);
+		Telefono telefono2 = new Telefono(689473953);
 
 		persona.altaTelefono(telefono1);
 		persona.altaTelefono(telefono2);

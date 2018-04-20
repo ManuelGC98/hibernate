@@ -79,6 +79,7 @@ public class Telefono {
 
 	@Override
 	public String toString() {
-		return "Telefono [idPersona=" + persona.getIdUsuario() + ", numero=" + numero;
+		return numero + "";
 	}
+
 }

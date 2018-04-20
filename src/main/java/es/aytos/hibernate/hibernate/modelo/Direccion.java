@@ -20,28 +20,28 @@ public class Direccion {
 	@Column(name = "DIR_ID")
 	private Integer idDireccion;
 
-	@Column(name = "DIR_PRO", nullable = false, length = 50)
+	@Column(name = "DIR_PRO")
 	private String provincia;
 
-	@Column(name = "DIR_CIU", nullable = false, length = 50)
+	@Column(name = "DIR_CIU")
 	private String ciudad;
 
-	@Column(name = "DIR_COP", nullable = false, length = 10)
+	@Column(name = "DIR_COP")
 	private String codigoPostal;
 
-	@Column(name = "DIR_CAL", nullable = false, length = 50)
+	@Column(name = "DIR_CAL")
 	private String calle;
 
-	@Column(name = "DIR_NUM", nullable = false, length = 5)
+	@Column(name = "DIR_NUM")
 	private Integer numero;
 
-	@Column(name = "DIR_BLO", nullable = false, length = 5)
+	@Column(name = "DIR_BLO")
 	private Integer bloque;
 
-	@Column(name = "DIR_PLA", nullable = false, length = 5)
+	@Column(name = "DIR_PLA")
 	private Integer planta;
 
-	@Column(name = "DIR_PUE", nullable = false, length = 5)
+	@Column(name = "DIR_PUE")
 	private String puerta;
 
 	@ManyToMany(mappedBy = "direcciones")

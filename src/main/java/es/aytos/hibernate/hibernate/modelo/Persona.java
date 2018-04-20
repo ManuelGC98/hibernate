@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import es.aytos.hibernate.hibernate.conversores.Converter;
@@ -44,13 +45,13 @@ public class Persona extends Usuario {
 	@OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private DetallesPersona detalles;
 
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	private List<Aficion> aficiones = new ArrayList<>();
 
-	@Column(name="PER_GEN", nullable = false, length = 1)
+	@Column(name = "PER_GEN", nullable = false, length = 1)
 	@Convert(converter = Converter.class)
 	private Genero genero;
-	
+
 	public Genero getGenero() {
 		return genero;
 	}
