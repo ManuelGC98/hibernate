@@ -5,8 +5,10 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NaturalId;
@@ -16,7 +18,8 @@ import org.hibernate.annotations.NaturalId;
 public class Telefono {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence-generator")
+	@SequenceGenerator(name = "sequence-generator", sequenceName = "secuencia_telefono", initialValue = 1, allocationSize = 10)
 	private Integer idTelefono;
 
 	@NaturalId
@@ -72,5 +75,10 @@ public class Telefono {
 	@Override
 	public int hashCode() {
 		return Objects.hash(numero);
+	}
+
+	@Override
+	public String toString() {
+		return "Telefono [idPersona=" + persona.getIdUsuario() + ", numero=" + numero;
 	}
 }

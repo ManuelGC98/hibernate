@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -41,6 +42,13 @@ public class Persona extends Usuario {
 	@OneToOne(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private DetallesPersona detalles;
 
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+	private List<Aficion> aficiones = new ArrayList<>();
+
+	@Column(name="PER_GEN", nullable = false, length = 1)
+	@Convert(converter)
+	private Genero genero;
+	
 	public Persona() {
 	}
 
@@ -118,7 +126,7 @@ public class Persona extends Usuario {
 		telefono.setPersona(null);
 	}
 
-	public DetallesPersona getDetails() {
+	public DetallesPersona getDetalles() {
 		return detalles;
 	}
 
@@ -132,5 +140,19 @@ public class Persona extends Usuario {
 			detalles.setPersona(null);
 			this.detalles = null;
 		}
+	}
+
+	public List<Aficion> getAficion() {
+		return aficiones;
+	}
+
+	public void altaAficion(Aficion aficion) {
+		aficiones.add(aficion);
+		aficion.getPersonas().add(this);
+	}
+
+	public void borrarAficion(Aficion aficion) {
+		aficiones.remove(aficion);
+		aficion.getPersonas().remove(this);
 	}
 }
