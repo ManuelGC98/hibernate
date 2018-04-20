@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import es.aytos.hibernate.hibernate.conversores.Converter;
+
 @Entity
 @Table(name = "A_PER")
 public class Persona extends Usuario {
@@ -46,9 +48,17 @@ public class Persona extends Usuario {
 	private List<Aficion> aficiones = new ArrayList<>();
 
 	@Column(name="PER_GEN", nullable = false, length = 1)
-	@Convert(converter)
+	@Convert(converter = Converter.class)
 	private Genero genero;
 	
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+
 	public Persona() {
 	}
 

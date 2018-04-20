@@ -1,5 +1,7 @@
 package es.aytos.hibernate.hibernate.modelo;
 
+import java.util.Arrays;
+
 public enum Genero {
 
 	MASCULINO("M"), FEMENINO("F");
@@ -14,4 +16,8 @@ public enum Genero {
 		return codigo;
 	}
 
+	public static Genero getEnumerado(String valor) {
+		return Arrays.asList(values()).stream().filter(genero -> genero.getCodigo().equals(valor)).findAny()
+				.orElse(null);
+	}
 }

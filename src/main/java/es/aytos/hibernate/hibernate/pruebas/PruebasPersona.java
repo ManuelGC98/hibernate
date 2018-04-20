@@ -6,13 +6,14 @@ import java.util.List;
 import es.aytos.hibernate.hibernate.modelo.DetallesPersona;
 import es.aytos.hibernate.hibernate.modelo.Direccion;
 import es.aytos.hibernate.hibernate.modelo.EstadoCivil;
+import es.aytos.hibernate.hibernate.modelo.Genero;
 import es.aytos.hibernate.hibernate.modelo.Persona;
 import es.aytos.hibernate.hibernate.modelo.Telefono;
 import es.aytos.hibernate.hibernate.repositorio.RepositorioPersona;
 
 public class PruebasPersona {
 	public static void main(String[] args) {
-		System.out.println(crearPersona("Usuario1", "12345678X"));
+		System.out.println(crearPersona("Usuario2", "12345678Z"));
 		// System.out.println(crearPersona("Usuario2", "12345678C"));
 
 		// modificarPersona(1);
@@ -31,6 +32,7 @@ public class PruebasPersona {
 		persona.setFechaAlta(new Date());
 		persona.setLogin(login);
 		persona.setPassword("Contraseña");
+		persona.setGenero(Genero.MASCULINO);
 
 		// Direccion direccion1 = new Direccion();
 		// direccion1.setProvincia("Sevilla");
@@ -108,7 +110,7 @@ public class PruebasPersona {
 		persona.altaTelefono(telefono2);
 
 		RepositorioPersona.crearPersona(persona);
-		
+
 		return persona.getTelefonos();
 	}
 }
