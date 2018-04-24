@@ -13,10 +13,10 @@ import es.aytos.hibernate.hibernate.repositorio.RepositorioPersona;
 
 public class PruebasPersona {
 	public static void main(String[] args) {
-		System.out.println(crearPersona("Usuario1", "12345678Z"));
+		// System.out.println(crearPersona("Usuario1", "12345678A"));
 		// modificarPersona(1);
-		// RepositorioPersona.eliminarPersona(2);
-		// System.out.println(RepositorioPersona.consultarPersona(1).toString());
+		// RepositorioPersona.eliminarPersona(1);
+		System.out.println(RepositorioPersona.consultar("", "", "", null, ""));
 		// System.out.println(getTelefonos("Usuario2", "12345678X"));
 	}
 
@@ -57,8 +57,8 @@ public class PruebasPersona {
 
 		persona.borrarDireccion(direccion1);
 
-		Telefono telefono1 = new Telefono(623456789);
-		Telefono telefono2 = new Telefono(621654098);
+		Telefono telefono1 = new Telefono(623799789);
+		Telefono telefono2 = new Telefono(621994098);
 
 		persona.altaTelefono(telefono1);
 		persona.altaTelefono(telefono2);
